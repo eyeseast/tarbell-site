@@ -33,7 +33,7 @@ DEFAULT_CONTEXT = {
 }
 
 # stack setup
-stack = Stack('_showcase',
+showcase = Stack('_showcase',
     Dates('date'), 
     Markdown(output_mode='html5')
 )
@@ -53,7 +53,7 @@ def add_stack():
     Add showcase posts to context, sorted by filename.
     For better sorting, use `sort` filter.
     """
-    return {'showcase_posts': stack.iter()}
+    return {'showcase_posts': showcase.iter()}
 
 
 @blueprint.app_context_processor
