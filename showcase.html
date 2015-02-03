@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+
+{% block nav %}{% endblock nav %}
+
+{% block content %}
+<div class="container content">
+    <div class="row">
+        <div class="col-md-8 posts">
+            {% for post in showcase_posts|sort(attribute='date', reverse=True) %}
+            <article class="post" id="{{ post.slug }}">
+                <h2>
+                    <a href="{{ post.link }}">{{ post.title }}</a>
+                </h2>
+                {% if post.credit %}
+                <p class="credit text-muted">
+                    {{ post.credit }} |
+                    {{ post.date|date('%b %d, %Y') }}
+                    {% if post.repo %}| <a href="{{ post.repo }}">view source</a>{% endif %}
+                </p>
+                {% endif %}
+                <div class="post-content">
+                    {{ post.content|safe }}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
